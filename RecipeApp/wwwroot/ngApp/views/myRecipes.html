@@ -1,0 +1,16 @@
+﻿    <h1>{{controller.message}}</h1>
+
+    
+       
+            <div ng-repeat="r in controller.recipes">
+
+
+                <div>
+                    <span>{{r.title}}</span>
+                    <span>{{r.dateCreated | date}}</span>
+                    <img ng-src="{{r.imageUrl}}" style="max-height: 200px; max-width: 200px; float:left; margin: 20px;" />
+                </div>
+            </div>
+
+
+

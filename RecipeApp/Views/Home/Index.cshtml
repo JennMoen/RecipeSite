@@ -1,0 +1,44 @@
+﻿<html ng-app="RecipeApp">
+<head>
+    <title>Your Recipe and Entertaining Hub</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+    <base href="/" />
+</head>
+<body ng-controller="AccountController as account">
+    <div class="container" >
+        <h1>Recipe App</h1>
+        <div>
+            <a href="/">Home</a> /
+            <a href="/myRecipes">My Recipes</a> /
+            <a href="/addRecipe">Add Recipes</a> /
+            <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
+            <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+            <div ng-show="account.isLoggedIn()">
+                [{{account.getUserName()}}]
+            </div>
+        </div>
+        <hr />
+
+        <ui-view></ui-view>
+    </div>    
+    
+    <script src="~/lib/angular/angular.js"></script>
+    <script src="~/lib/angular-resource/angular-resource.js"></script>
+    <script src="~/lib/angular-animate/angular-animate.js"></script>
+    <script src="~/lib/angular-touch/angular-touch.js"></script>
+    <script src="~/lib/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
+   
+    <script src="~/lib/filepicker-js/filepicker.js"></script>
+    <script src="~/lib/angular-filepicker/dist/angular_filepicker.js"></script>
+
+    <script src="~/ngApp/app.js"></script>
+    <script src="~/ngApp/controllers/controllers.js"></script>
+    <script src="~/ngApp/services/services.js"></script>
+
+    <!--the yeoman code has some angular security stuff written in, so I might want to copy that later-->
+    <script src="~/ngApp/controllers/accountController.js"></script>
+    <script src="~/ngApp/services/accountService.js"></script>
+</body>
+</html>

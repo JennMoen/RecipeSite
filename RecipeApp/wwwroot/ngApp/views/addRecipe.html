@@ -1,0 +1,12 @@
+﻿<button ng-click="controller.pickFile()">Upload</button>
+<h2>{{controller.file.filename}}</h2>
+
+<form ng-submit="controller.addRecipe(recipe, controller.image)"> 
+   
+    <img ng-src="{{controller.file.url | fpConvert:{w: 400} }}" alt="{{controller.file.filename}}" value="controller.image"/>
+    <input type="text" ng-model="recipe.title" placeholder="Title" />
+    <input type="text" ng-model="recipe.notes" placeholder="Notes" />
+
+    <input type="submit" value="Add Recipe" />
+
+</form>
