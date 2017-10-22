@@ -26,6 +26,29 @@ var RecipeApp;
             return MyRecipesController;
         }());
         Controllers.MyRecipesController = MyRecipesController;
+        var RecipeDetailController = (function () {
+            function RecipeDetailController($http, $state, $stateParams) {
+                var _this = this;
+                this.$http = $http;
+                this.$state = $state;
+                this.$stateParams = $stateParams;
+                $http.get("/api/recipes/" + $stateParams['id']).then(function (results) {
+                    _this.recipe = results.data;
+                });
+            }
+            RecipeDetailController.prototype.addStep = function (step) {
+                var _this = this;
+                this.$http.post("/api/recipes/" + this.$stateParams['id'] + "/steps", step)
+                    .then(function (results) {
+                    _this.$state.reload();
+                })
+                    .catch(function (reason) {
+                    console.log(reason);
+                });
+            };
+            return RecipeDetailController;
+        }());
+        Controllers.RecipeDetailController = RecipeDetailController;
         var AddRecipeController = (function () {
             function AddRecipeController(filepickerService, $scope, $http, $state) {
                 this.filepickerService = filepickerService;
@@ -55,6 +78,24 @@ var RecipeApp;
             return AddRecipeController;
         }());
         Controllers.AddRecipeController = AddRecipeController;
+        var MenuController = (function () {
+            function MenuController() {
+            }
+            return MenuController;
+        }());
+        Controllers.MenuController = MenuController;
+        var MenuDetailController = (function () {
+            function MenuDetailController() {
+            }
+            return MenuDetailController;
+        }());
+        Controllers.MenuDetailController = MenuDetailController;
+        var NoteController = (function () {
+            function NoteController() {
+            }
+            return NoteController;
+        }());
+        Controllers.NoteController = NoteController;
     })(Controllers = RecipeApp.Controllers || (RecipeApp.Controllers = {}));
 })(RecipeApp || (RecipeApp = {}));
 //# sourceMappingURL=controllers.js.map

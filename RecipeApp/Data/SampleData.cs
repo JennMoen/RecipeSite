@@ -49,16 +49,20 @@ namespace RecipeApp.Data
                 await userManager.CreateAsync(NonAdmin, "Secret123!");
             }
 
-            if (!db.Recipes.Any())
+            if (!db.Menus.Any())
             {
-                db.Recipes.AddRange(
+                db.Menus.AddRange(
+                    new Menu()
+                    {
 
-                    new Recipe()
+                        MenuItems = new List<Recipe>()
+                        {
+                            new Recipe()
                     {
                         Title = "Mac N Cheese",
                         TimeToMake = "30 min",
                         User = NonAdmin,
-                        ImageUrl = "Images/Bistro-Mac-Cheese.jpg",
+                        ImageUrl = "../images/Bistro-Mac-Cheese.jpg",
                         Notes = "Be sure to add cheese slowly off heat so that it doesn't seize",
                         Ingredients = new List<Ingredient>()
                         {
@@ -121,12 +125,12 @@ namespace RecipeApp.Data
 
                     },
 
-                    new Recipe()
+                            new Recipe()
                     {
                         Title = "Cheater's Piza",
                         TimeToMake = "30 min",
-                        User = Admin,
-                        ImageUrl = "Images/pizza.jpg",
+                        User =  NonAdmin,
+                        ImageUrl = "../images/pizza.jpg",
                         Notes = "Who would think a frozen pizza could taste so awesome?",
                         Ingredients = new List<Ingredient>()
                         {
@@ -154,13 +158,21 @@ namespace RecipeApp.Data
                                  new Step()
                             {
                                 Description="Bake pizza according to package directions.  I like to use a really hot pizza stone to get the crust extra crisp"
-                            }
+                                 }
+                        }
+
+                        }
                         }
 
                     });
+
+
+
                 db.SaveChanges();
             }
 
         }
     }
 }
+
+

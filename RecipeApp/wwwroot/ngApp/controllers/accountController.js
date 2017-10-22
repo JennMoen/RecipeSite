@@ -40,7 +40,7 @@ var RecipeApp;
             LoginController.prototype.login = function () {
                 var _this = this;
                 this.accountService.login(this.loginUser).then(function () {
-                    _this.$location.path('/');
+                    _this.$location.path('/myRecipes');
                 }).catch(function (results) {
                     _this.validationMessages = results;
                 });

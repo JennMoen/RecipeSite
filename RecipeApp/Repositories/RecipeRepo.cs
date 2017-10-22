@@ -34,9 +34,30 @@ namespace RecipeApp.Repositories
                    
         }
 
+        public IQueryable<Recipe> GetById(int id, string user)
+        {
+            return from r in _db.Recipes
+                   where r.Id == id && r.User.UserName == user
+                   select r;
+        }
+
         public void Add(Recipe recipe)
         {
             _db.Recipes.Add(recipe);
+            _db.SaveChanges();
+        }
+
+        public void AddIngredient(Ingredient ingredient)
+        {
+            _db.Ingredients.Add(ingredient);
+            _db.SaveChanges();
+        }
+
+        public void AddStep(Step step, int id, string user)
+        {
+           
+            _db.Steps.Add(step);
+            
             _db.SaveChanges();
         }
 

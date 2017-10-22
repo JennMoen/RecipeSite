@@ -3,6 +3,7 @@
     <title>Your Recipe and Entertaining Hub</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
     <base href="/" />
 </head>
 <body ng-controller="AccountController as account">
@@ -12,6 +13,8 @@
             <a href="/">Home</a> /
             <a href="/myRecipes">My Recipes</a> /
             <a href="/addRecipe">Add Recipes</a> /
+            <a href="/menus">My Menus</a> /
+            <a href="/notes">Notes</a> /
             <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
             <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
             <div ng-show="account.isLoggedIn()">

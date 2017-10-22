@@ -18,6 +18,8 @@ namespace RecipeApp.Data
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Step> Steps { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Note> Notes { get; set; }
+        public DbSet<Menu> Menus { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

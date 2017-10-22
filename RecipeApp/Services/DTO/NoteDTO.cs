@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 
 namespace RecipeApp.Services.DTO
 {
-    public class IngredientDTO
+    public class NoteDTO
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Amount { get; set; }
-        public int RecipeId { get; set; }
+        public string Text {get; set; }
+
     }
 }

@@ -15,6 +15,30 @@ var RecipeApp;
             controller: RecipeApp.Controllers.MyRecipesController,
             controllerAs: 'controller'
         })
+            .state('recipeDetails', {
+            url: '/recipeDetails/:id',
+            templateUrl: '/ngApp/views/recipeDetails.html',
+            controller: RecipeApp.Controllers.RecipeDetailController,
+            controllerAs: 'controller'
+        })
+            .state('menus', {
+            url: '/menus',
+            templateUrl: '/ngApp/views/menus.html',
+            controller: RecipeApp.Controllers.MenuController,
+            controllerAs: 'controller'
+        })
+            .state('menuDetails', {
+            url: '/menuDetails/:id',
+            templateUrl: '/ngApp/views/menuDetails.html',
+            controller: RecipeApp.Controllers.MenuDetailController,
+            controllerAs: 'controller'
+        })
+            .state('notes', {
+            url: '/notes',
+            templateUrl: '/ngApp/views/notes.html',
+            controller: RecipeApp.Controllers.NoteController,
+            controllerAs: 'controller'
+        })
             .state('addRecipe', {
             url: '/addRecipe',
             templateUrl: '/ngApp/views/addRecipe.html',

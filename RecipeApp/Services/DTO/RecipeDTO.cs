@@ -11,7 +11,8 @@ namespace RecipeApp.Services.DTO
         //nifty feature of C# 6--you can initialize a property without having to make a constuctor
         public DateTime DateCreated { get; set; }
 
-        
+        public string UserId { get; set; }
+
         //fun new thing to try: image uploading
         public string ImageUrl { get; set; }
 
@@ -22,6 +23,8 @@ namespace RecipeApp.Services.DTO
         public string TimeToMake { get; set; }
 
         public string Notes { get; set; }
+
+        public int MenuId { get; set; }
 
 
 

@@ -41,7 +41,7 @@
 
         public login() {
             this.accountService.login(this.loginUser).then(() => {
-                this.$location.path('/');
+                this.$location.path('/myRecipes');
             }).catch((results) => {
                 this.validationMessages = results;
             });

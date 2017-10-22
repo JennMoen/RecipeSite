@@ -1,0 +1,19 @@
+﻿<h2>This is just a standard detail view where you can see your recipe and all of its details.  I think I should also have a list of any menus or entertaining notes where this recipe is featured and have a link to those pages</h2>
+
+{{controller.recipe.title}}
+{{controller.recipe.dateCreated | date}}
+<img ng-src="{{controller.recipe.imageUrl}}" />
+
+<div ng-repeat="i in controller.recipe.ingredients">
+    {{i.name}}
+    {{i.amount}}
+</div>
+<div ng-repeat="s in controller.recipe.steps">
+    {{s.description}}
+</div>
+
+
+<form ng-submit="controller.addStep(step)">
+    <label for="step">Step</label>
+    <input ng-model="step.description" type="text"/>
+</form>

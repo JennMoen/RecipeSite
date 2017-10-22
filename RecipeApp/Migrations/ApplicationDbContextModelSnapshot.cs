@@ -5,13 +5,12 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using RecipeApp.Data;
 
-namespace RecipeApp.Data.Migrations
+namespace RecipeApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171016213810_start")]
-    partial class start
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -183,7 +182,7 @@ namespace RecipeApp.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int?>("RecipeId");
+                    b.Property<int>("RecipeId");
 
                     b.HasKey("Id");
 
@@ -192,12 +191,38 @@ namespace RecipeApp.Data.Migrations
                     b.ToTable("Ingredients");
                 });
 
+            modelBuilder.Entity("RecipeApp.Models.Menu", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Menus");
+                });
+
+            modelBuilder.Entity("RecipeApp.Models.Note", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notes");
+                });
+
             modelBuilder.Entity("RecipeApp.Models.Recipe", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("DateCreated");
+
                     b.Property<string>("ImageUrl");
+
+                    b.Property<int>("MenuId");
 
                     b.Property<string>("Notes");
 
@@ -209,6 +234,8 @@ namespace RecipeApp.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MenuId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Recipes");
@@ -219,7 +246,9 @@ namespace RecipeApp.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("RecipeId");
+                    b.Property<string>("Description");
+
+                    b.Property<int>("RecipeId");
 
                     b.HasKey("Id");
 
@@ -267,13 +296,19 @@ namespace RecipeApp.Data.Migrations
 
             modelBuilder.Entity("RecipeApp.Models.Ingredient", b =>
                 {
-                    b.HasOne("RecipeApp.Models.Recipe")
+                    b.HasOne("RecipeApp.Models.Recipe", "Recipe")
                         .WithMany("Ingredients")
-                        .HasForeignKey("RecipeId");
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("RecipeApp.Models.Recipe", b =>
                 {
+                    b.HasOne("RecipeApp.Models.Menu", "MenuReference")
+                        .WithMany("MenuItems")
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("RecipeApp.Models.ApplicationUser", "User")
                         .WithMany("MyRecipes")
                         .HasForeignKey("UserId");
@@ -281,9 +316,10 @@ namespace RecipeApp.Data.Migrations
 
             modelBuilder.Entity("RecipeApp.Models.Step", b =>
                 {
-                    b.HasOne("RecipeApp.Models.Recipe")
+                    b.HasOne("RecipeApp.Models.Recipe", "Recipe")
                         .WithMany("Steps")
-                        .HasForeignKey("RecipeId");
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

@@ -50,6 +50,35 @@ namespace RecipeApp.Services
 
         }
 
+        public RecipeDTO GetById(int id, string user)
+        {
+            return (from r in _rRepo.GetById(id, user)
+                    select new RecipeDTO()
+                    {
+                        Id=id,
+                        Title = r.Title,
+                        ImageUrl = r.ImageUrl,
+                        TimeToMake = r.TimeToMake,
+                        Notes = r.Notes,
+                        DateCreated = r.DateCreated,
+                        Ingredients = (from i in r.Ingredients
+                                       select new IngredientDTO
+                                       {
+                                           Id = i.Id,
+                                           Amount = i.Amount,
+                                           Name = i.Name
+                                       }).ToList(),
+                        Steps = (from s in r.Steps
+                                 select new StepDTO
+                                 {
+                                     Id = s.Id,
+                                     Description = s.Description
+                                 }).ToList(),
+                        UserId = _uRepo.getCurrentUser(user).First().Id
+                    }).First();
+        }
+
+
         public IList<RecipeDTO> DisplayMostRecent()
         {
 
@@ -93,6 +122,25 @@ namespace RecipeApp.Services
 
             };
             _rRepo.Add(dbRecipe);
+        }
+
+        public void AddRecipeStep(StepDTO step, int id, string user)
+        {
+            //id = _rRepo.GetById(id, user).First().Id;
+
+            id = step.RecipeId;
+
+            Step dbStep = new Step()
+            {
+                Id = step.Id,
+                Description = step.Description,
+                
+            };
+            
+            
+            _rRepo.AddStep(dbStep, id, user);
+
+
         }
     }
 }

@@ -27,6 +27,10 @@ namespace RecipeApp.Models
 
         public string Notes { get; set; }
 
+        public int MenuId { get; set; }
+        [ForeignKey("MenuId")]
+        public Menu MenuReference { get; set; }
+
 
     }
 }

@@ -29,6 +29,25 @@ namespace RecipeApp.Controllers
             return _rService.GetRecipesForUser(User.Identity.Name);
         }
 
+        [HttpGet("{id}")]
+        public RecipeDTO GetById(int id, string user)
+        {
+            return _rService.GetById(id, User.Identity.Name);
+        }
+
+        [HttpPost("{id}/steps")]
+        public IActionResult AddStep([FromBody] StepDTO step, int id)
+        {
+            id = _rService.GetById(id, User.Identity.Name).Id;
+               
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            _rService.AddRecipeStep(step, id, User.Identity.Name);
+            return Ok();
+        }
+
         [HttpGet("recents")]
         public IList<RecipeDTO> GetTopSix(){
             return _rService.DisplayMostRecent();

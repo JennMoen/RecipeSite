@@ -25,6 +25,27 @@
         }
     }
 
+    export class RecipeDetailController {
+        public recipe;
+
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService) {
+            $http.get(`/api/recipes/${$stateParams['id']}`).then((results) => {
+                this.recipe = results.data;
+            });
+        }
+
+        public addStep(step) {
+            
+            this.$http.post(`/api/recipes/${this.$stateParams['id']}/steps`, step)
+                .then((results) => {
+                    this.$state.reload();
+                })
+                .catch((reason) => {
+                    console.log(reason);
+                });
+        }
+    }
+
     export class AddRecipeController {
 
         public file;
@@ -59,6 +80,10 @@
         constructor(private filepickerService, private $scope: ng.IScope, private $http: ng.IHttpService, private $state: ng.ui.IStateService ) { }
     }
 
+    export class MenuController{ }
 
+    export class MenuDetailController{}
+
+    export class NoteController{}
 
 }
