@@ -118,6 +118,7 @@ namespace RecipeApp.Services
                 ImageUrl = recipe.ImageUrl,
                 DateCreated = DateTime.Now,
                 Notes = recipe.Notes,
+                
                 UserId = _uRepo.getCurrentUser(currentUser).First().Id
 
             };
@@ -126,20 +127,33 @@ namespace RecipeApp.Services
 
         public void AddRecipeStep(StepDTO step, int id, string user)
         {
-            //id = _rRepo.GetById(id, user).First().Id;
-
-            id = step.RecipeId;
-
+           
             Step dbStep = new Step()
             {
                 Id = step.Id,
                 Description = step.Description,
+                RecipeId = _rRepo.GetById(id, user).First().Id
                 
             };
             
             
-            _rRepo.AddStep(dbStep, id, user);
+            _rRepo.AddStep(dbStep);
 
+        }
+
+        public void AddIngredient(IngredientDTO ingredient, int id, string user)
+        {
+
+            Ingredient dbIngredient = new Ingredient()
+            {
+                Id = ingredient.Id,                
+                Amount= ingredient.Amount,
+                Name=ingredient.Name,
+                RecipeId = _rRepo.GetById(id, user).First().Id
+
+            };
+
+            _rRepo.AddIngredient(dbIngredient);
 
         }
     }

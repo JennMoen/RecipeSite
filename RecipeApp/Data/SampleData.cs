@@ -54,7 +54,8 @@ namespace RecipeApp.Data
                 db.Menus.AddRange(
                     new Menu()
                     {
-
+                        Name="Comfort Food Fest",
+                        User= NonAdmin,
                         MenuItems = new List<Recipe>()
                         {
                             new Recipe()

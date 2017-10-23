@@ -35,6 +35,7 @@ namespace RecipeApp.Controllers
             return _rService.GetById(id, User.Identity.Name);
         }
 
+        [Authorize]
         [HttpPost("{id}/steps")]
         public IActionResult AddStep([FromBody] StepDTO step, int id)
         {
@@ -45,6 +46,19 @@ namespace RecipeApp.Controllers
                 return BadRequest(ModelState);
             }
             _rService.AddRecipeStep(step, id, User.Identity.Name);
+            return Ok();
+        }
+
+        [HttpPost("{id}/ingredients")]
+        public IActionResult AddIngredient([FromBody] IngredientDTO ingredient, int id)
+        {
+            id = _rService.GetById(id, User.Identity.Name).Id;
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            _rService.AddIngredient(ingredient, id, User.Identity.Name);
             return Ok();
         }
 

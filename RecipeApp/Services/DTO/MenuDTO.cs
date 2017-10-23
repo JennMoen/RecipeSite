@@ -9,6 +9,9 @@ namespace RecipeApp.Services.DTO
     {
 
         public int Id { get; set; }
+        public string User { get; set; }
+        public string Name { get; set; }
+
         public IList<RecipeDTO> Recipes { get; set; }
 
 

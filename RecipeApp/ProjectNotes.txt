@@ -1,0 +1,6 @@
+﻿Text file is here for notes of things I need to fix, along with other project ideas
+
+1.  Look into a way to build and print out shopping lists per recipe!  I'd like for the user to be able to build a list and print it--no need to store to the database;  it'd just be a temporary file to send to the printer
+
+
+

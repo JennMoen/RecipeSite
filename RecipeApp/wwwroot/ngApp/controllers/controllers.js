@@ -79,7 +79,12 @@ var RecipeApp;
         }());
         Controllers.AddRecipeController = AddRecipeController;
         var MenuController = (function () {
-            function MenuController() {
+            function MenuController($http) {
+                var _this = this;
+                this.$http = $http;
+                $http.get('/api/menus').then(function (results) {
+                    _this.menus = results.data;
+                });
             }
             return MenuController;
         }());

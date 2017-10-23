@@ -8,9 +8,10 @@ using RecipeApp.Data;
 namespace RecipeApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171023160639_addedMenuName")]
+    partial class addedMenuName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -232,7 +233,7 @@ namespace RecipeApp.Migrations
 
                     b.Property<string>("ImageUrl");
 
-                    b.Property<int?>("MenuId");
+                    b.Property<int>("MenuId");
 
                     b.Property<string>("Notes");
 
@@ -330,7 +331,8 @@ namespace RecipeApp.Migrations
                 {
                     b.HasOne("RecipeApp.Models.Menu", "MenuReference")
                         .WithMany("MenuItems")
-                        .HasForeignKey("MenuId");
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("RecipeApp.Models.ApplicationUser", "User")
                         .WithMany("MyRecipes")

@@ -80,7 +80,17 @@
         constructor(private filepickerService, private $scope: ng.IScope, private $http: ng.IHttpService, private $state: ng.ui.IStateService ) { }
     }
 
-    export class MenuController{ }
+    export class MenuController{
+        public menus;
+
+        constructor(private $http: ng.IHttpService) {
+            $http.get('/api/menus').then((results) => {
+                this.menus = results.data;
+            });
+        }
+
+
+    }
 
     export class MenuDetailController{}
 

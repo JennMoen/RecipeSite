@@ -181,7 +181,7 @@ namespace RecipeApp.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DateCreated = table.Column<DateTime>(nullable: false),
                     ImageUrl = table.Column<string>(nullable: true),
-                    MenuId = table.Column<int>(nullable: false),
+                    MenuId = table.Column<int>(nullable: true),
                     Notes = table.Column<string>(nullable: true),
                     TimeToMake = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
@@ -195,7 +195,7 @@ namespace RecipeApp.Migrations
                         column: x => x.MenuId,
                         principalTable: "Menus",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Recipes_AspNetUsers_UserId",
                         column: x => x.UserId,

@@ -53,11 +53,9 @@ namespace RecipeApp.Repositories
             _db.SaveChanges();
         }
 
-        public void AddStep(Step step, int id, string user)
-        {
-           
+        public void AddStep(Step step)
+        {           
             _db.Steps.Add(step);
-            
             _db.SaveChanges();
         }
 
