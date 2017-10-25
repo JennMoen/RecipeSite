@@ -118,7 +118,7 @@ namespace RecipeApp.Services
                 ImageUrl = recipe.ImageUrl,
                 DateCreated = DateTime.Now,
                 Notes = recipe.Notes,
-                
+                //MenuId = recipe.Menu.Id,
                 UserId = _uRepo.getCurrentUser(currentUser).First().Id
 
             };

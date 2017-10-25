@@ -1,13 +1,32 @@
-﻿body {
+﻿
+body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: gray;
+    background-color: lightgray;
+    font-family: 'Bree Serif', serif;
+  
+}
+
+#breakfast {
+    background:  url("https://static.pexels.com/photos/619328/pexels-photo-619328.jpeg");
+    background-size: 100%;
+   
+}
+
+.noteCard{
+    height: 250px;
+    width: 150px;
+    background-color: whitesmoke;
+    margin: 20px;
+    float: left;
+ 
+    
 }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
+    padding-left: 25px;
     padding-right: 15px;
 }
 

@@ -1,19 +1,34 @@
-﻿<h2>This is just a standard detail view where you can see your recipe and all of its details.  I think I should also have a list of any menus or entertaining notes where this recipe is featured and have a link to those pages</h2>
+﻿<!--<h2>This is just a standard detail view where you can see your recipe and all of its details.  I think I should also have a list of any menus or entertaining notes where this recipe is featured and have a link to those pages</h2>-->
+<div class="container">
+    <div class="panel panel-success">
+        <div class="panel-heading">{{controller.recipe.title}} {{controller.recipe.dateCreated | date}}</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3"><img ng-src="{{controller.recipe.imageUrl}}" class="img-rounded img-responsive" /></div>
+                    <div class="col-md-9">
+                        <h4>Ingredients:</h4>
+                        <div ng-repeat="i in controller.recipe.ingredients">
+                            {{i.name}}
+                            {{i.amount}}
+                        </div>
+                        <h4>Steps:</h4>
+                        <div ng-repeat="s in controller.recipe.steps">
+                            {{s.description}}
+                        </div>
+                        <h5>Additional Notes:</h5>
+                        <div>{{r.notes}}</div>
+                    </div>
+                </div>
+            </div>
+       
+    </div>
+    
+    
 
-{{controller.recipe.title}}
-{{controller.recipe.dateCreated | date}}
-<img ng-src="{{controller.recipe.imageUrl}}" />
 
-<div ng-repeat="i in controller.recipe.ingredients">
-    {{i.name}}
-    {{i.amount}}
+    <form ng-submit="controller.addStep(step)">
+        <label for="step">Add a Step</label>
+        <input ng-model="step.description" type="text" />
+    </form>
+
 </div>
-<div ng-repeat="s in controller.recipe.steps">
-    {{s.description}}
-</div>
-
-
-<form ng-submit="controller.addStep(step)">
-    <label for="step">Step</label>
-    <input ng-model="step.description" type="text"/>
-</form>

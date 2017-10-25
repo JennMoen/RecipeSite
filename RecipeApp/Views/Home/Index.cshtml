@@ -3,28 +3,58 @@
     <title>Your Recipe and Entertaining Hub</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+    <link href="https://bootswatch.com/paper/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <base href="/" />
 </head>
 <body ng-controller="AccountController as account">
-    <div class="container" >
-        <h1>Recipe App</h1>
-        <div>
-            <a href="/">Home</a> /
-            <a href="/myRecipes">My Recipes</a> /
-            <a href="/addRecipe">Add Recipes</a> /
-            <a href="/menus">My Menus</a> /
-            <a href="/notes">Notes</a> /
-            <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
-            <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-            <div ng-show="account.isLoggedIn()">
-                [{{account.getUserName()}}]
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/myRecipes">My Recipes</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Recipe Box <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/addRecipe">Add Recipe</a></li>
+                            <li><a href="/menus">My Menus</a></li>
+                            <li><a href="/notes">My Notes</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="login" ng-show="!account.isLoggedIn()">Login</a></li>
+                    <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
+                </ul>
             </div>
         </div>
-        <hr />
-
+        <div ng-show="account.isLoggedIn()">
+            Welcome, {{account.getUserName()}}
+        </div>
+    </nav>
+    <hr />
+    <div>
         <ui-view></ui-view>
-    </div>    
+    </div>
+
     
     <script src="~/lib/angular/angular.js"></script>
     <script src="~/lib/angular-resource/angular-resource.js"></script>
@@ -32,7 +62,7 @@
     <script src="~/lib/angular-touch/angular-touch.js"></script>
     <script src="~/lib/angular-bootstrap/ui-bootstrap.js"></script>
     <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
-   
+
     <script src="~/lib/filepicker-js/filepicker.js"></script>
     <script src="~/lib/angular-filepicker/dist/angular_filepicker.js"></script>
 

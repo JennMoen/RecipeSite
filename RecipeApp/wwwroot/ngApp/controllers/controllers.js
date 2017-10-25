@@ -19,8 +19,10 @@ var RecipeApp;
                 var _this = this;
                 this.$http = $http;
                 this.message = "My recipes";
+                this.width = 12;
                 $http.get('/api/recipes').then(function (results) {
                     _this.recipes = results.data;
+                    _this.width = _this.recipes.length < 7 ? Math.floor(12 / _this.recipes.length) : 1;
                 });
             }
             return MyRecipesController;

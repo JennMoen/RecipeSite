@@ -1,6 +1,15 @@
 ﻿Text file is here for notes of things I need to fix, along with other project ideas
 
-1.  Look into a way to build and print out shopping lists per recipe!  I'd like for the user to be able to build a list and print it--no need to store to the database;  it'd just be a temporary file to send to the printer
+1.  Look into a way to build and print out shopping lists per recipe!  I'd like for the user to be able to build a list and print it--no need to store to the database;  it'd just be a temporary file to send to the printer.  I don't want to do just ctrl P--I want it to format it nicely like Bon Appetit does.
+https://msdn.microsoft.com/en-us/library/windows/desktop/ff819270(v=vs.85).aspx   for info on some built-in functionality I might have in VS or at least through Microsoft
+
+2.  Add recipe categories (did but haven't migrated or added to DbContext; still need to assign catId to each recipe too)
+
+3. Research how to make angular ng-repeat play nicely with Bootstrap columns since the array number is highly variable
+
+4.  On myRecipes page, maybe have categories with, say, the 4 most recently added recipes in each.  Then maybe you can click on a category and it'll go to its own page.  Also, if I don't want to have to mess with the rows and all that stuff, I should just append a eacipe and its thumbnail to a table or something instead.
+
+5.It would be BALLER to be able to drag the steps around; I'm sure it's easy and just requies some animation, but I think it might also require reordering them in the database.  The easy or shortcut way around it would just be to edit one line at a time.  Do that first then look into the dragging thing
 
 
 

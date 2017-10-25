@@ -17,11 +17,16 @@
         public message = "My recipes";
 
         public recipes;
+        public width = 12;
 
         constructor(private $http: ng.IHttpService) {
             $http.get('/api/recipes').then((results) => {
                 this.recipes = results.data;
+                this.width = this.recipes.length < 7 ? Math.floor(12 / this.recipes.length) : 1;       
+                   
             });
+
+            
         }
     }
 
