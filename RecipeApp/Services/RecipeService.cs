@@ -32,6 +32,8 @@ namespace RecipeApp.Services
                         TimeToMake = r.TimeToMake,
                         Notes = r.Notes,
                         DateCreated = r.DateCreated,
+                        CatId = r.CatId,
+                        CatName = r.CatReference.Name,
                         Ingredients = (from i in r.Ingredients
                                        select new IngredientDTO
                                        {
@@ -60,6 +62,8 @@ namespace RecipeApp.Services
                         ImageUrl = r.ImageUrl,
                         TimeToMake = r.TimeToMake,
                         Notes = r.Notes,
+                        CatId = r.CatId,
+                        CatName = r.CatReference.Name,
                         DateCreated = r.DateCreated,
                         Ingredients = (from i in r.Ingredients
                                        select new IngredientDTO
@@ -118,6 +122,8 @@ namespace RecipeApp.Services
                 ImageUrl = recipe.ImageUrl,
                 DateCreated = DateTime.Now,
                 Notes = recipe.Notes,
+                CatId = recipe.CatId,
+                //CatReference = (Category)recipe.Catetory,
                 //MenuId = recipe.Menu.Id,
                 UserId = _uRepo.getCurrentUser(currentUser).First().Id
 

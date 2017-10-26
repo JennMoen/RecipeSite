@@ -1,6 +1,6 @@
 ﻿<!--<h2>This is just a standard detail view where you can see your recipe and all of its details.  I think I should also have a list of any menus or entertaining notes where this recipe is featured and have a link to those pages</h2>-->
 <div class="container">
-    <div class="panel panel-success">
+    <div class="panel panel-default">
         <div class="panel-heading">{{controller.recipe.title}} {{controller.recipe.dateCreated | date}}</div>
             <div class="panel-body">
                 <div class="row">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </div>
-       
+       <div class="panel-footer">Filed under: {{controller.recipe.catName}}</div>
     </div>
     
     

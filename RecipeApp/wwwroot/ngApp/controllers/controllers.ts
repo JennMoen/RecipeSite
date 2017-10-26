@@ -8,25 +8,25 @@
         constructor(private $http: ng.IHttpService) {
             $http.get('/api/recipes/recents').then((results) => {
                 this.recents = results.data;
-                
+
             });
         }
     }
-    
+
     export class MyRecipesController {
         public message = "My recipes";
 
         public recipes;
-        public width = 12;
+        //public width = 12;
 
         constructor(private $http: ng.IHttpService) {
             $http.get('/api/recipes').then((results) => {
                 this.recipes = results.data;
-                this.width = this.recipes.length < 7 ? Math.floor(12 / this.recipes.length) : 1;       
-                   
+                //this.width = this.recipes.length < 7 ? Math.floor(12 / this.recipes.length) : 1;       
+
             });
 
-            
+
         }
     }
 
@@ -40,7 +40,7 @@
         }
 
         public addStep(step) {
-            
+
             this.$http.post(`/api/recipes/${this.$stateParams['id']}/steps`, step)
                 .then((results) => {
                     this.$state.reload();
@@ -55,6 +55,7 @@
 
         public file;
         public image;
+        public categories;
 
         public pickFile() {
             this.filepickerService.pick(
@@ -63,29 +64,33 @@
             );
         }
 
-       
+
         public fileUploaded(file) {
             this.file = file;
-            this.$scope.$apply(); 
+            this.$scope.$apply();
             this.image = file.url;
         }
 
-       
+
         public addRecipe(recipe, imageUrl) {
             recipe.imageUrl = imageUrl;
             this.$http.post('/api/recipes', recipe, recipe.imageUrl)
                 .then((results) => {
                     this.$state.go('myRecipes');
                 })
-                    .catch((reason) => {
-                        console.log(reason);
-                    });
+                .catch((reason) => {
+                    console.log(reason);
+                });
         }
-         
-        constructor(private filepickerService, private $scope: ng.IScope, private $http: ng.IHttpService, private $state: ng.ui.IStateService ) { }
+
+        constructor(private filepickerService, private $scope: ng.IScope, private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+            $http.get('/api/categories').then((results) => {
+                this.categories = results.data;
+            });
+        }
     }
 
-    export class MenuController{
+    export class MenuController {
         public menus;
 
         constructor(private $http: ng.IHttpService) {
@@ -97,8 +102,8 @@
 
     }
 
-    export class MenuDetailController{}
+    export class MenuDetailController { }
 
-    export class NoteController{}
+    export class NoteController { }
 
 }

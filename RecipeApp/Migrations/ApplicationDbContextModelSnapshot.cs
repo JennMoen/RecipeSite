@@ -173,6 +173,18 @@ namespace RecipeApp.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("RecipeApp.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("RecipeApp.Models.Ingredient", b =>
                 {
                     b.Property<int>("Id")
@@ -228,6 +240,8 @@ namespace RecipeApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("CatId");
+
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<string>("ImageUrl");
@@ -243,6 +257,8 @@ namespace RecipeApp.Migrations
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CatId");
 
                     b.HasIndex("MenuId");
 
@@ -328,6 +344,11 @@ namespace RecipeApp.Migrations
 
             modelBuilder.Entity("RecipeApp.Models.Recipe", b =>
                 {
+                    b.HasOne("RecipeApp.Models.Category", "CatReference")
+                        .WithMany("Recipes")
+                        .HasForeignKey("CatId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("RecipeApp.Models.Menu", "MenuReference")
                         .WithMany("MenuItems")
                         .HasForeignKey("MenuId");

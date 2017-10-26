@@ -19,6 +19,11 @@ namespace RecipeApp.Models
         [ForeignKey("MenuId")]
         public Menu MenuReference { get; set; }
 
+        //I do not want this to be a nullable key because I want every single recipe to be linked to a category
+        public int CatId { get; set; }
+        [ForeignKey("CatId")]
+        public Category CatReference { get; set; }
+
         public DateTime DateCreated { get; set; }
         public string ImageUrl { get; set; }
         public string Title { get; set; }

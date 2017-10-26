@@ -8,8 +8,8 @@ using RecipeApp.Data;
 namespace RecipeApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171023160639_addedMenuName")]
-    partial class addedMenuName
+    [Migration("20171026024951_start")]
+    partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -174,6 +174,18 @@ namespace RecipeApp.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("RecipeApp.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("RecipeApp.Models.Ingredient", b =>
                 {
                     b.Property<int>("Id")
@@ -229,11 +241,13 @@ namespace RecipeApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("CatId");
+
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<string>("ImageUrl");
 
-                    b.Property<int>("MenuId");
+                    b.Property<int?>("MenuId");
 
                     b.Property<string>("Notes");
 
@@ -244,6 +258,8 @@ namespace RecipeApp.Migrations
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CatId");
 
                     b.HasIndex("MenuId");
 
@@ -329,10 +345,14 @@ namespace RecipeApp.Migrations
 
             modelBuilder.Entity("RecipeApp.Models.Recipe", b =>
                 {
+                    b.HasOne("RecipeApp.Models.Category", "CatReference")
+                        .WithMany("Recipes")
+                        .HasForeignKey("CatId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("RecipeApp.Models.Menu", "MenuReference")
                         .WithMany("MenuItems")
-                        .HasForeignKey("MenuId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("MenuId");
 
                     b.HasOne("RecipeApp.Models.ApplicationUser", "User")
                         .WithMany("MyRecipes")

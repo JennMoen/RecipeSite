@@ -11,6 +11,9 @@ namespace RecipeApp.Services.DTO
         public string UserId { get; set; }
         public int MenuId { get; set; }
         public MenuDTO Menu { get; set; }
+        public int CatId { get; set; }
+        public CatDTO Catetory { get; set; }
+        public string CatName { get; set; }
 
         public DateTime DateCreated { get; set; }       
         public string ImageUrl { get; set; }

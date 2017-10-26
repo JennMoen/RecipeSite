@@ -29,7 +29,7 @@
                     <div>{{r.dateCreated | date}}</div>
                 </div>
                 <div class="panel-body">
-                    <img ng-src="{{r.imageUrl}}" class="panel-image img-responsive" />
+                    <img ui-sref="recipeDetails({id: r.id})" ng-src="{{r.imageUrl}}" class="panel-image img-responsive" />
                 </div>
             </div>
         </div>

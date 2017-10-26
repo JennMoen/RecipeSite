@@ -15,14 +15,14 @@ var RecipeApp;
         }());
         Controllers.HomeController = HomeController;
         var MyRecipesController = (function () {
+            //public width = 12;
             function MyRecipesController($http) {
                 var _this = this;
                 this.$http = $http;
                 this.message = "My recipes";
-                this.width = 12;
                 $http.get('/api/recipes').then(function (results) {
                     _this.recipes = results.data;
-                    _this.width = _this.recipes.length < 7 ? Math.floor(12 / _this.recipes.length) : 1;
+                    //this.width = this.recipes.length < 7 ? Math.floor(12 / this.recipes.length) : 1;       
                 });
             }
             return MyRecipesController;
@@ -53,10 +53,14 @@ var RecipeApp;
         Controllers.RecipeDetailController = RecipeDetailController;
         var AddRecipeController = (function () {
             function AddRecipeController(filepickerService, $scope, $http, $state) {
+                var _this = this;
                 this.filepickerService = filepickerService;
                 this.$scope = $scope;
                 this.$http = $http;
                 this.$state = $state;
+                $http.get('/api/categories').then(function (results) {
+                    _this.categories = results.data;
+                });
             }
             AddRecipeController.prototype.pickFile = function () {
                 this.filepickerService.pick({ mimetype: 'image/*' }, this.fileUploaded.bind(this));

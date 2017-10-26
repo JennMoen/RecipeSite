@@ -41,6 +41,13 @@ namespace RecipeApp.Repositories
                    select r;
         }
 
+        public IQueryable<Recipe> GetByCatName(string name)
+        {
+            return from r in _db.Recipes
+                   where r.CatReference.Name == name
+                   select r;
+        }
+
         public void Add(Recipe recipe)
         {
             _db.Recipes.Add(recipe);

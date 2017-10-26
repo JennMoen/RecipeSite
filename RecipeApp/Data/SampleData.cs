@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using RecipeApp.Repositories;
 
 namespace RecipeApp.Data
 {
     public class SampleData
     {
-
         public async static Task Initialize(IServiceProvider serviceProvider)
         {
+            var catRepo = serviceProvider.GetService<CategoryRepo>();
             var db = serviceProvider.GetService<ApplicationDbContext>();
             var userManager = serviceProvider.GetService<UserManager<ApplicationUser>>();
 
@@ -49,13 +50,74 @@ namespace RecipeApp.Data
                 await userManager.CreateAsync(NonAdmin, "Secret123!");
             }
 
+            if (!db.Categories.Any())
+            {
+                db.Categories.AddRange(
+                    new Category()
+                    {
+                        Name = "Breakfast and Brunch"
+                    },
+                    new Category()
+                    {
+                        Name = "Appetizers/Snacks"
+                    },
+                    new Category()
+                    {
+                        Name = "Soups"
+                    },
+                    new Category()
+                    {
+                        Name = "Salads"
+                    },
+                     new Category()
+                     {
+                         Name = "Breads"
+                     },
+                     new Category()
+                     {
+                         Name = "Pizzas/Pastas/Tasty Carbs"
+                     },
+                     new Category()
+                     {
+                         Name = "Sides"
+                     },
+                     new Category()
+                     {
+                         Name = "Birds"
+                     },
+                     new Category()
+                     {
+                         Name = "Beasts"
+                     },
+                     new Category()
+                     {
+                         Name = "Desserts"
+                     },
+                     new Category()
+                     {
+                         Name = "Rubs and Marinaes"
+                     },
+                     new Category()
+                     {
+                         Name = "Drinks"
+                     },
+                     new Category()
+                     {
+                         Name = "Everything Else"
+                     });
+
+
+            }
+
+            db.SaveChanges();
+
             if (!db.Menus.Any())
             {
                 db.Menus.AddRange(
                     new Menu()
                     {
-                        Name="Comfort Food Fest",
-                        User= NonAdmin,
+                        Name = "Comfort Food Fest",
+                        User = NonAdmin,
                         MenuItems = new List<Recipe>()
                         {
                             new Recipe()
@@ -63,6 +125,7 @@ namespace RecipeApp.Data
                         Title = "Mac N Cheese",
                         TimeToMake = "30 min",
                         User = NonAdmin,
+                        CatId = catRepo.GetCatByName("Pizzas/Pastas/Tasty Carbs").First().Id,
                         ImageUrl = "../images/Bistro-Mac-Cheese.jpg",
                         Notes = "Be sure to add cheese slowly off heat so that it doesn't seize",
                         Ingredients = new List<Ingredient>()
@@ -131,6 +194,7 @@ namespace RecipeApp.Data
                         Title = "Cheater's Piza",
                         TimeToMake = "30 min",
                         User =  NonAdmin,
+                        CatId = catRepo.GetCatByName("Pizzas/Pastas/Tasty Carbs").First().Id,
                         ImageUrl = "../images/pizza.jpg",
                         Notes = "Who would think a frozen pizza could taste so awesome?",
                         Ingredients = new List<Ingredient>()

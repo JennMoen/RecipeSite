@@ -9,4 +9,10 @@
 
     <input type="submit" value="Add Recipe" />
 
+    <select ng-model="recipe.catId">
+        <option ng-repeat="c in controller.categories" value="{{c.id}}">
+            {{c.name}}
+        </option>
+    </select>
+
 </form>

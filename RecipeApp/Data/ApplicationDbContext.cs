@@ -20,7 +20,7 @@ namespace RecipeApp.Data
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Note> Notes { get; set; }
         public DbSet<Menu> Menus { get; set; }
-
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
