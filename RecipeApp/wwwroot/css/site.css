@@ -7,6 +7,10 @@ body {
   
 }
 
+h1{
+    padding: 20px;
+}
+
 #breakfast {
     background:  url("https://static.pexels.com/photos/619328/pexels-photo-619328.jpeg");
     background-size: 100%;
@@ -19,8 +23,15 @@ body {
     background-color: whitesmoke;
     margin: 20px;
     float: left;
- 
-    
+}
+
+.test-panel{
+    height: 300px;
+}
+
+.panel-image{
+   height: 200px;
+   margin: auto;
 }
 
 /* Wrapping element */

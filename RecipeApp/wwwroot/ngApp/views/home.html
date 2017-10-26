@@ -1,9 +1,18 @@
-﻿<h1>{{controller.message}}</h1>
-<h2>Check out some of our featured recipes</h2>
-<div ng-repeat="r in controller.recents">
-    <span>{{r.title}}</span>
-    <span>{{r.dateCreated | date}}</span>
-    <img ng-src="{{r.imageUrl}}" style="height: 50%; width: 30%; float:left; margin: 20px;" />
+﻿<div class="container">
+    <h1>Check out some of our featured recipes</h1>
+ 
+    <div class="row">
 
-
+        <div class="col-md-4" ng-repeat="r in controller.recents">
+            <div class="panel panel-default test-panel">
+                <div class="panel-heading">
+                    <div>{{r.title}}</div>
+                    <div>{{r.dateCreated | date}}</div>
+                </div>
+                <div class="panel-body">
+                    <img ng-src="{{r.imageUrl}}" class="panel-image img-responsive" />
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
