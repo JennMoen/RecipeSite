@@ -28,7 +28,7 @@ namespace RecipeApp.Repositories
         public IQueryable<Recipe> GetMostRecent()
         {
             var recipes = (from r in _db.Recipes
-                   orderby r.DateCreated
+                   orderby r.DateCreated descending
                    select r).Take(6);
             return recipes;
                    

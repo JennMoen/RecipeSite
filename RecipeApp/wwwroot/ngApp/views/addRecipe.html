@@ -1,8 +1,8 @@
-﻿<button ng-click="controller.pickFile()">Upload</button>
+﻿<!--<button ng-click="controller.pickFile()">Upload</button>
 <h2>{{controller.file.filename}}</h2>
 
-<form ng-submit="controller.addRecipe(recipe, controller.image)"> 
-   
+<form ng-submit="controller.addRecipe(recipe, controller.image)">
+
     <img ng-src="{{controller.file.url | fpConvert:{w: 400} }}" alt="{{controller.file.filename}}" value="controller.image"/>
     <input type="text" ng-model="recipe.title" placeholder="Title" />
     <input type="text" ng-model="recipe.notes" placeholder="Notes" />
@@ -15,4 +15,42 @@
         </option>
     </select>
 
-</form>
+</form>-->
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Add a new recipe</h3>
+    </div>
+    <div class="panel-body">
+        <form ng-submit="controller.addRecipe(recipe, controller.image)">
+            <div class="form-group">
+                <input type="text" ng-model="recipe.title" placeholder="Title" />
+            </div>
+            <div class="form-group">
+                <input type="text" ng-model="recipe.notes" placeholder="Notes" />
+            </div>
+
+            <div class="form-group">
+                <label for="category">Choose a recipe category</label>
+                <select ng-model="recipe.catId">
+                    <option ng-repeat="c in controller.categories" value="{{c.id}}">
+                        {{c.name}}
+                    </option>
+                </select>
+            </div>
+            <h5>Upload a cool picture of your recipe!</h5>
+            <button class="btn btn-info" ng-click="controller.pickFile()">Upload</button>
+            <h6>Currently uploaded file: {{controller.file.filename}}</h6>
+
+            <div class="well">
+                <img ng-src="{{controller.file.url | fpConvert:{w: 400} }}" alt="{{controller.file.filename}}" value="controller.image" />
+            </div>
+            <button class="btn btn-success">Add Recipe</button>
+        </form>
+
+
+    </div>
+</div>
+

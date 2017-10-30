@@ -4,34 +4,61 @@ body {
     padding-bottom: 20px;
     background-color: lightgray;
     font-family: 'Bree Serif', serif;
-  
 }
 
-h1{
+textarea {
+    width: 300px;
+    height: 200px;
+}
+
+h1 {
     padding: 20px;
 }
 
-#breakfast {
-    background:  url("https://static.pexels.com/photos/619328/pexels-photo-619328.jpeg");
+.breakfast {
+    background: url("https://static.pexels.com/photos/619328/pexels-photo-619328.jpeg");
     background-size: 100%;
-   
+    
 }
 
-.noteCard{
-    height: 250px;
-    width: 150px;
+/*this is just experimentation to see if it overrides the dinner party class that I set the transparency on--so far it does not*/
+#makeBold {
+    opacity: 1.0 !important;
+}
+
+.dinnerParty {
+    background: url("https://static.pexels.com/photos/265903/pexels-photo-265903.jpeg");
+    background-size: 100%;
+    opacity: 0.6;
+}
+
+.noteCard {
+    height: 200px;
+    width: 300px;
     background-color: whitesmoke;
     margin: 20px;
     float: left;
+    overflow: hidden;
+    padding: 10px;
+    font-size: large;
 }
 
-.test-panel{
+.noteCard-large {
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    padding: 15px;
+    background-color: whitesmoke;
+    font-size: large;
+}
+
+.test-panel {
     height: 300px;
 }
 
-.panel-image{
-   height: 200px;
-   margin: auto;
+.panel-image {
+    height: 200px;
+    margin: auto;
 }
 
 /* Wrapping element */

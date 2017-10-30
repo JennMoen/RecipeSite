@@ -15,6 +15,7 @@ namespace RecipeApp.Models
         [ForeignKey("UserId")]
         public ApplicationUser User { get; set; }
 
+        public DateTime DateAdded { get; set; }
 
         public string Text { get; set; }
 

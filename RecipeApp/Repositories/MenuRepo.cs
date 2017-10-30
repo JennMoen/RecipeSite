@@ -24,5 +24,12 @@ namespace RecipeApp.Repositories
                    select m;
         }
 
+        public IQueryable<Menu> GetMenuById(int id)
+        {
+            return from m in _db.Menus
+                   where m.Id == id
+                   select m;
+        }
+
     }
 }

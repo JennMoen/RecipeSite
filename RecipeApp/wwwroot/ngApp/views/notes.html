@@ -1,18 +1,32 @@
 ﻿
 
-<div class="container">
-    <h4>Here is where I want to store other misc notes; not 100% sure how they'll get organized</h4>
-    <div id="breakfast" class="well well-lg">
+
+    <h4>My Notes (Add a new note)</h4>
+    <div class="well well-lg breakfast">
         <div class="row">
-            <div class="col-md-4">
-                <div class="noteCard">Here is a test note</div>
+            <div class="col-md-4" ng-repeat="n in controller.notes">
+                <div class="noteCard" ui-sref="noteDetail({id:n.id})">{{n.dateAdded | date}}
+                <div>{{n.text}}</div>
+                </div>
             </div>
-            <div class="col-md-4">
+            <!--<div class="col-md-4">
                 <div class="noteCard">Here is another test note</div>
             </div>
             <div class="col-md-4">
                 <div class="noteCard">Here is a third test note</div>
-            </div>
+            </div>-->
         </div>
+        
     </div>
-</div>
+<form ng-submit="controller.addNote(note)">
+    <div class="form-group">
+        <label for="text">Type a new note</label>
+        <textarea ng-model="note.text" placeholder="jot down anything, from menu ideas to a cool new ingredient you want to try" />
+        <button>Add your Note</button>
+    </div>
+</form>
+
+
+       
+   
+

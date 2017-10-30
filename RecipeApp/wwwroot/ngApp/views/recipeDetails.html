@@ -28,7 +28,14 @@
 
     <form ng-submit="controller.addStep(step)">
         <label for="step">Add a Step</label>
-        <input ng-model="step.description" type="text" />
+        <input ng-model="step.description" type="text" placeholder="add a recipe step"/>
+        <button>Add Step</button>
+    </form>
+    <form ng-submit="controller.addIngredient(ingredient)">
+        <label for="ingredient">Add an Ingredient</label>
+        <input ng-model="ingredient.name" type="text" placeholder="ingredient name"/>
+        <input ng-model="ingredient.amount" type="text" placeholder="amount"/>
+        <button>Add Ingredient</button>
     </form>
 
 </div>

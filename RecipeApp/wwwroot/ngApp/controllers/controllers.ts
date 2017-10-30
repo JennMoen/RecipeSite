@@ -49,6 +49,18 @@
                     console.log(reason);
                 });
         }
+
+        public addIngredient(ingredient) {
+
+            this.$http.post(`/api/recipes/${this.$stateParams['id']}/ingredients`, ingredient)
+                .then((results) => {
+                    this.$state.reload();
+                    console.log(ingredient);
+                })
+                .catch((reason) => {
+                    console.log(reason);
+                });
+        }
     }
 
     export class AddRecipeController {
@@ -102,8 +114,52 @@
 
     }
 
-    export class MenuDetailController { }
+    export class MenuDetailController {
 
-    export class NoteController { }
+        public menu;
+
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService) {
+            $http.get(`/api/menus/${this.$stateParams['id']}`).then((results) => {
+                this.menu = results.data;
+
+            });
+        }
+
+    }
+
+    export class NoteController {
+
+        public notes;
+
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService) {
+            $http.get('/api/notes').then((results) => {
+                this.notes = results.data;
+
+            });
+        }
+
+        public addNote(note) {
+            this.$http.post('/api/notes', note).then((results) => {
+                this.$state.reload();
+                console.log(note);
+            }).catch((reason) => {
+                console.log(reason);
+            });
+        }
+    
+
+    }
+
+    export class NoteDetailController{
+
+        public note;
+
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService) {
+            $http.get(`/api/notes/${this.$stateParams['id']}`).then((results) => {
+                this.note = results.data;
+
+            });
+        }
+    }
 
 }

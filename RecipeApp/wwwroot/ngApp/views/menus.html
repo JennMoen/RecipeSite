@@ -1,9 +1,22 @@
-﻿<h2> Here is where I want to store my menus.  It'd be cool to show them in little rectangles, like a menu on a piece of paper, and hide the text overflow.  Then when you click on one, you of course go to the menu details page</h2>
+﻿<!--<h2> Here is where I want to store my menus.  It'd be cool to show them in little rectangles, like a menu on a piece of paper, and hide the text overflow.  Then when you click on one, you of course go to the menu details page</h2>-->
 
-<div ng-repeat="m in controller.menus">
-    {{m.name}}
-    <div ng-repeat="r in m.recipes">
-        {{r.title}}
+
+<h1>My Menus</h1>
+<div class="well well-lg dinnerParty">
+    <div class="row">
+        <div class="col-md-4" ng-repeat="m in controller.menus">
+            <div id="makeBold">
+                <div class="noteCard" ui-sref="menuDetails({id:m.id})">
+
+                    <div>
+                        <h4>{{m.name}}</h4>
+                    </div>
+                    <div ng-repeat="r in m.recipes">
+                        {{r.title}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

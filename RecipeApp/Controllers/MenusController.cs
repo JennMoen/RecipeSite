@@ -29,6 +29,12 @@ namespace RecipeApp.Controllers
             return _mService.GetyMenus(User.Identity.Name);
         }
 
+        [HttpGet("{id}")]
+        public MenuDTO GetById(int id)
+        {
+            return _mService.GetMenusById(id);
+        }
+
 
     }
 }

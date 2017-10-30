@@ -91,6 +91,14 @@ namespace RecipeApp.Data
                      },
                      new Category()
                      {
+                         Name = "Seafood"
+                     },
+                     new Category()
+                     {
+                         Name = "Vegetables"
+                     },
+                     new Category()
+                     {
                          Name = "Desserts"
                      },
                      new Category()

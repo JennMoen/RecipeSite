@@ -48,6 +48,17 @@ var RecipeApp;
                     console.log(reason);
                 });
             };
+            RecipeDetailController.prototype.addIngredient = function (ingredient) {
+                var _this = this;
+                this.$http.post("/api/recipes/" + this.$stateParams['id'] + "/ingredients", ingredient)
+                    .then(function (results) {
+                    _this.$state.reload();
+                    console.log(ingredient);
+                })
+                    .catch(function (reason) {
+                    console.log(reason);
+                });
+            };
             return RecipeDetailController;
         }());
         Controllers.RecipeDetailController = RecipeDetailController;
@@ -96,17 +107,53 @@ var RecipeApp;
         }());
         Controllers.MenuController = MenuController;
         var MenuDetailController = (function () {
-            function MenuDetailController() {
+            function MenuDetailController($http, $state, $stateParams) {
+                var _this = this;
+                this.$http = $http;
+                this.$state = $state;
+                this.$stateParams = $stateParams;
+                $http.get("/api/menus/" + this.$stateParams['id']).then(function (results) {
+                    _this.menu = results.data;
+                });
             }
             return MenuDetailController;
         }());
         Controllers.MenuDetailController = MenuDetailController;
         var NoteController = (function () {
-            function NoteController() {
+            function NoteController($http, $state, $stateParams) {
+                var _this = this;
+                this.$http = $http;
+                this.$state = $state;
+                this.$stateParams = $stateParams;
+                $http.get('/api/notes').then(function (results) {
+                    _this.notes = results.data;
+                });
             }
+            NoteController.prototype.addNote = function (note) {
+                var _this = this;
+                this.$http.post('/api/notes', note).then(function (results) {
+                    _this.$state.reload();
+                    console.log(note);
+                }).catch(function (reason) {
+                    console.log(reason);
+                });
+            };
             return NoteController;
         }());
         Controllers.NoteController = NoteController;
+        var NoteDetailController = (function () {
+            function NoteDetailController($http, $state, $stateParams) {
+                var _this = this;
+                this.$http = $http;
+                this.$state = $state;
+                this.$stateParams = $stateParams;
+                $http.get("/api/notes/" + this.$stateParams['id']).then(function (results) {
+                    _this.note = results.data;
+                });
+            }
+            return NoteDetailController;
+        }());
+        Controllers.NoteDetailController = NoteDetailController;
     })(Controllers = RecipeApp.Controllers || (RecipeApp.Controllers = {}));
 })(RecipeApp || (RecipeApp = {}));
 //# sourceMappingURL=controllers.js.map

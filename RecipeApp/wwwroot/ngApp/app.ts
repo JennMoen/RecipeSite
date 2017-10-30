@@ -44,6 +44,12 @@
                 controller: RecipeApp.Controllers.NoteController,
                 controllerAs: 'controller'
             })
+            .state('noteDetail', {
+                url: '/noteDetail/:id',
+                templateUrl: '/ngApp/views/noteDetail.html',
+                controller: RecipeApp.Controllers.NoteDetailController,
+                controllerAs: 'controller'
+            })
             .state('addRecipe', {
                 url: '/addRecipe',
                 templateUrl: '/ngApp/views/addRecipe.html',

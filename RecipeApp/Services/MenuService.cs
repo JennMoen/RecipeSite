@@ -39,6 +39,28 @@ namespace RecipeApp.Services
                     }).ToList();
         }
 
+        public MenuDTO GetMenusById(int id)
+        {
+            return (from m in _mRepo.GetMenuById(id)
+                    select new MenuDTO()
+                    {
+                        Id = m.Id,
+                        Name = m.Name,
+                        User = m.User.UserName,
+                        Recipes = (from r in m.MenuItems
+                                   select new RecipeDTO()
+                                   {
+                                       Id = r.Id,
+                                       DateCreated = r.DateCreated,
+                                       ImageUrl = r.ImageUrl,
+                                       Notes = r.Notes,
+                                       TimeToMake = r.TimeToMake,
+                                       Title = r.Title,
+
+                                   }).ToList()
+                    }).FirstOrDefault();
+        }
+
 
 
 

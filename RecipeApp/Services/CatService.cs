@@ -24,17 +24,17 @@ namespace RecipeApp.Services
                     select new CatDTO()
                     {
                         Id = c.Id,
-                        Name = c.Name,
-                        Recipes = (from r in c.Recipes select new RecipeDTO()
-                        {
-                            Id = r.Id,
-                            DateCreated = r.DateCreated,
-                            ImageUrl = r.ImageUrl,
-                            Notes = r.Notes,
-                            TimeToMake = r.TimeToMake,
-                            Title = r.Title,
-                            MenuId = r.MenuReference.Id                             
-                        }).ToList()
+                        Name = c.Name
+                        //Recipes = (from r in c.Recipes select new RecipeDTO()
+                        //{
+                        //    Id = r.Id,
+                        //    DateCreated = r.DateCreated,
+                        //    ImageUrl = r.ImageUrl,
+                        //    Notes = r.Notes,
+                        //    TimeToMake = r.TimeToMake,
+                        //    Title = r.Title,
+                        //    MenuId = r.MenuReference.Id                             
+                        //}).ToList()
                     }).ToList();
         }
 

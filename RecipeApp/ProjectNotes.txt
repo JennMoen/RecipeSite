@@ -11,5 +11,5 @@ https://msdn.microsoft.com/en-us/library/windows/desktop/ff819270(v=vs.85).aspx 
 
 5.It would be BALLER to be able to drag the steps around; I'm sure it's easy and just requies some animation, but I think it might also require reordering them in the database.  The easy or shortcut way around it would just be to edit one line at a time.  Do that first then look into the dragging thing
 
-
+6.  Really dumb and obvious, but I need to add seafood and veggies to my categories
 
