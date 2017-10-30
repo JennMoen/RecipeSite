@@ -56,16 +56,27 @@ var RecipeApp;
                     console.log(reason);
                 });
             };
+            RecipeDetailController.prototype.deleteRecipe = function (recipe) {
+                var _this = this;
+                this.$http.delete("/api/recipes/" + this.$stateParams['id'], recipe).then(function (results) {
+                    _this.$state.go('myRecipes');
+                })
+                    .catch(function (reason) {
+                    console.log(reason);
+                });
+            };
             return RecipeDetailController;
         }());
         Controllers.RecipeDetailController = RecipeDetailController;
         var AddRecipeController = (function () {
-            function AddRecipeController(filepickerService, $scope, $http, $state) {
+            function AddRecipeController(filepickerService, $scope, $http, $state, $stateParams, detailService) {
                 var _this = this;
                 this.filepickerService = filepickerService;
                 this.$scope = $scope;
                 this.$http = $http;
                 this.$state = $state;
+                this.$stateParams = $stateParams;
+                this.detailService = detailService;
                 $http.get('/api/categories').then(function (results) {
                     _this.categories = results.data;
                 });

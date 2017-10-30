@@ -66,5 +66,11 @@ namespace RecipeApp.Repositories
             _db.SaveChanges();
         }
 
+        public void DeleteRecipe(Recipe recipe)
+        {
+            _db.Remove(recipe);
+            _db.SaveChanges();
+        }
+
     }
 }

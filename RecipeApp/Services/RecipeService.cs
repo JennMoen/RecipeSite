@@ -162,5 +162,11 @@ namespace RecipeApp.Services
             _rRepo.AddIngredient(dbIngredient);
 
         }
+
+        public void DeleteRecipe(RecipeDTO recipe, string user)
+        {
+            _rRepo.DeleteRecipe(_rRepo.GetById(recipe.Id, user).First());
+        }
+
     }
 }

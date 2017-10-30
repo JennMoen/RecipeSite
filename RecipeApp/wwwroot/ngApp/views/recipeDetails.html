@@ -20,7 +20,9 @@
                     </div>
                 </div>
             </div>
-       <div class="panel-footer">Filed under: {{controller.recipe.catName}}</div>
+       <div class="panel-footer">Filed under: {{controller.recipe.catName}}
+        <button class="btn btn-xs btn-danger right-align" ng-click="controller.deleteRecipe(recipe)">Delete recipe</button>
+        </div>
     </div>
     
     

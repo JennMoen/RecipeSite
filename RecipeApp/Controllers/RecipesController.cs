@@ -77,6 +77,17 @@ namespace RecipeApp.Controllers
             _rService.AddRecipe(recipe, User.Identity.Name);
             return Ok();
         }
+         [HttpDelete("{id}")]
+         public IActionResult DeleteRecipe(RecipeDTO recipe, int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            recipe.Id = id;
+            _rService.DeleteRecipe(recipe, User.Identity.Name);
 
+            return Ok();
+        }
     }
 }

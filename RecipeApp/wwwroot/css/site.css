@@ -11,6 +11,10 @@ textarea {
     height: 200px;
 }
 
+.right-align{
+    float: right;
+}
+
 /*h1 {
     padding: 20px;
 }*/

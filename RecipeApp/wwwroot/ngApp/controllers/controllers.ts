@@ -19,7 +19,7 @@
         //constructor(private $http: ng.IHttpService) {
         //    $http.get('/api/recipes').then((results) => {
         //        this.recipes = results.data;
-               
+
         //    });
         //}
 
@@ -63,6 +63,15 @@
                     console.log(reason);
                 });
         }
+
+        public deleteRecipe(recipe) {
+            this.$http.delete(`/api/recipes/${this.$stateParams['id']}`, recipe).then((results) => {
+                this.$state.go('myRecipes');
+            })
+                .catch((reason) => {
+                    console.log(reason);
+                });
+        }
     }
 
     export class AddRecipeController {
@@ -84,7 +93,8 @@
             this.$scope.$apply();
             this.image = file.url;
         }
-
+        public recipes;
+        public id;
 
         public addRecipe(recipe, imageUrl) {
             recipe.imageUrl = imageUrl;
@@ -97,7 +107,7 @@
                 });
         }
 
-        constructor(private filepickerService, private $scope: ng.IScope, private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+        constructor(private filepickerService, private $scope: ng.IScope, private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService, private detailService: RecipeApp.Services.DetailService) {
             $http.get('/api/categories').then((results) => {
                 this.categories = results.data;
             });
@@ -148,11 +158,11 @@
                 console.log(reason);
             });
         }
-    
+
 
     }
 
-    export class NoteDetailController{
+    export class NoteDetailController {
 
         public note;
 
