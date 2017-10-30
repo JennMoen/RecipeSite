@@ -26,5 +26,11 @@ namespace RecipeApp.Controllers
             return _cService.GetCategories();
         }
 
+        [HttpGet("recipes")]
+        public IEnumerable<CatDTO> GetRecipesByCategory()
+        {
+            return _cService.GetRecipesByCategory();
+        }
+
     }
 }

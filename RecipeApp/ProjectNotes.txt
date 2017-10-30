@@ -13,3 +13,9 @@ https://msdn.microsoft.com/en-us/library/windows/desktop/ff819270(v=vs.85).aspx 
 
 6.  Really dumb and obvious, but I need to add seafood and veggies to my categories
 
+7.  look into https://spoonacular.com/food-api  to see if I could use it for anything
+
+8. Add Entertaining gallery where people can post pictures of tablescapes and party decor or something
+
+9. https://stackoverflow.com/questions/14053519/trying-to-allow-nulls-but-nullable-object-must-have-a-value  My CatService kept failing because it said nullable types must have a value and the problem was with my MenuId, which is a nullable type, so I added .GetValueorDefault().  Best solution said: 
+"This exception occurs when you try to access to the Value property of Nullable type when HasValue is false. See Nullable Types on MSDN."  So think was an issue with me not being too familiar with nullable types 

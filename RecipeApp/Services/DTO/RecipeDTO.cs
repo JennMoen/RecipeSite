@@ -10,9 +10,9 @@ namespace RecipeApp.Services.DTO
         public int Id { get; set; }
         public string UserId { get; set; }
         public int MenuId { get; set; }
-        public MenuDTO Menu { get; set; }
+        //public MenuDTO Menu { get; set; }
         public int CatId { get; set; }
-        public CatDTO Catetory { get; set; }
+        //public CatDTO Catetory { get; set; }
         public string CatName { get; set; }
 
         public DateTime DateCreated { get; set; }       

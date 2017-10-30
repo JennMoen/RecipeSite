@@ -1,25 +1,4 @@
-﻿   
-            <!--<div ng-repeat="r in controller.recipes">
-
-
-                <div>
-                    <span>{{r.title}}</span>
-                    <span>{{r.dateCreated | date}}</span>
-                    <img  ui-sref="recipeDetails({id: r.id})" ng-src="{{r.imageUrl}}" style="max-height: 200px; max-width: 200px; float:left; margin: 20px;" />
-                </div>
-            </div>-->
-
-<!--<div class="body-content">
-    <h1>{{controller.message}}</h1>
-    <div class="row">
-        <div class="col-md-{{controller.width}}" ng-repeat="r in controller.recipes">
-            <div>{{r.title}}</div>
-            <div>{{r.dateCreated | date}}</div>
-            <img ui-sref="recipeDetails({id: r.id})" ng-src="{{r.imageUrl}}" class="img-thumbnail img-responsive" />
-        </div>
-    </div>
-</div>-->
-
+﻿<!--<h1>My Recipes</h1>
 <div class="container">
     <div class="row">
         <div class="col-md-4" ng-repeat="r in controller.recipes">
@@ -30,6 +9,29 @@
                 </div>
                 <div class="panel-body">
                     <img ui-sref="recipeDetails({id: r.id})" ng-src="{{r.imageUrl}}" class="panel-image img-responsive" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+
+<div class="container">
+    <h1>My Recipes</h1>
+    <h3>by Category</h3>
+    <div class="row">
+        <div class="col-md-6" ng-repeat="c in controller.categories">
+            <div class="panel panel-default test-panel">
+                <div class="panel-heading">
+                    <div>{{c.name}}</div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3" ng-repeat="r in c.recipes">
+                            <div>{{r.title}}</div>
+                            <img ui-sref="recipeDetails({id: r.id})" ng-src="{{r.imageUrl}}" class="img-thumbnail" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -15,14 +15,11 @@ var RecipeApp;
         }());
         Controllers.HomeController = HomeController;
         var MyRecipesController = (function () {
-            //public width = 12;
             function MyRecipesController($http) {
                 var _this = this;
                 this.$http = $http;
-                this.message = "My recipes";
-                $http.get('/api/recipes').then(function (results) {
-                    _this.recipes = results.data;
-                    //this.width = this.recipes.length < 7 ? Math.floor(12 / this.recipes.length) : 1;       
+                $http.get('/api/categories/recipes').then(function (results) {
+                    _this.categories = results.data;
                 });
             }
             return MyRecipesController;

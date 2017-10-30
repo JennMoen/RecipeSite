@@ -1,1 +1,13 @@
-﻿<h2>This will of course be the details page for each menu.  I plan on having the recipe ID for each menu item available so that you can click on that recipe if you want to see it</h2>
+﻿<!--<h2>This will of course be the details page for each menu.  I plan on having the recipe ID for each menu item available so that you can click on that recipe if you want to see it</h2>-->
+
+
+<h1>Menu Details</h1>
+<div class="well well-lg dinnerParty">
+   <div class="noteCard-large">
+       <h3 id="menuTitle">{{controller.menu.name}}</h3>
+       <br />
+       <div ng-repeat="r in controller.menu.recipes">
+           {{r.title}}
+       </div>
+   </div>
+</div>

@@ -11,9 +11,9 @@ textarea {
     height: 200px;
 }
 
-h1 {
+/*h1 {
     padding: 20px;
-}
+}*/
 
 .breakfast {
     background: url("https://static.pexels.com/photos/619328/pexels-photo-619328.jpeg");
@@ -30,6 +30,10 @@ h1 {
     background: url("https://static.pexels.com/photos/265903/pexels-photo-265903.jpeg");
     background-size: 100%;
     opacity: 0.6;
+}
+
+#menuTitle{
+    text-align: center;
 }
 
 .noteCard {
