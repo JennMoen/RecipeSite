@@ -31,6 +31,10 @@ namespace RecipeApp.Controllers
         {
             return _cService.GetRecipesByCategory();
         }
-
+        [HttpGet("{name}")]
+        public CatDTO GetcatByName(string name)
+        {
+            return _cService.GetCatByName(name);
+        }
     }
 }

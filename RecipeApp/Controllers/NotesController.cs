@@ -44,5 +44,16 @@ namespace RecipeApp.Controllers
             return Ok();
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult DeleteNote(NoteDTO note, int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            _nService.DeleteNote(note, id);
+            return Ok();
+        }
+
     }
 }

@@ -20,10 +20,22 @@
                 controller: RecipeApp.Controllers.MyRecipesController,
                 controllerAs: 'controller'
             })
+            .state('photoGallery', {
+                url: '/photoGallery',
+                templateUrl: '/ngApp/views/photoGallery.html',
+                controller: RecipeApp.Controllers.PhotoGalleryController,
+                controllerAs: 'controller'
+            })
             .state('recipeDetails', {
                 url: '/recipeDetails/:id',
                 templateUrl: '/ngApp/views/recipeDetails.html',
                 controller: RecipeApp.Controllers.RecipeDetailController,
+                controllerAs: 'controller'
+            })
+            .state('catDetails', {
+                url: '/catDetails/:id',
+                templateUrl: '/ngApp/views/catDetails.html',
+                controller: RecipeApp.Controllers.CatDetailController,
                 controllerAs: 'controller'
             })
             .state('menus', {

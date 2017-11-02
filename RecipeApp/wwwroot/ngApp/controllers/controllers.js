@@ -159,9 +159,78 @@ var RecipeApp;
                     _this.note = results.data;
                 });
             }
+            NoteDetailController.prototype.deleteNote = function (note) {
+                var _this = this;
+                this.$http.delete("/api/notes/" + this.$stateParams['id']).then(function (results) {
+                    _this.$state.go('notes');
+                });
+            };
             return NoteDetailController;
         }());
         Controllers.NoteDetailController = NoteDetailController;
+        var CatDetailController = (function () {
+            function CatDetailController($http, $stateParams, $state) {
+                var _this = this;
+                this.$http = $http;
+                this.$stateParams = $stateParams;
+                this.$state = $state;
+                $http.get("/api/categories/" + this.$stateParams['id']).then(function (results) {
+                    _this.category = results.data;
+                });
+            }
+            return CatDetailController;
+        }());
+        Controllers.CatDetailController = CatDetailController;
+        var PhotoGalleryController = (function () {
+            function PhotoGalleryController(filepickerService, $scope, $http, $state) {
+                var _this = this;
+                this.filepickerService = filepickerService;
+                this.$scope = $scope;
+                this.$http = $http;
+                this.$state = $state;
+                $http.get('/api/photos').then(function (results) {
+                    _this.photos = results.data;
+                })
+                    .catch(function (reason) {
+                    console.log(reason);
+                });
+            }
+            PhotoGalleryController.prototype.pickFile = function () {
+                this.filepickerService.pick({ mimetype: 'image/*' }, this.fileUploaded.bind(this));
+            };
+            PhotoGalleryController.prototype.fileUploaded = function (file) {
+                this.file = file;
+                this.$scope.$apply();
+                this.image = file.url;
+            };
+            PhotoGalleryController.prototype.addPhoto = function (photo, image) {
+                var _this = this;
+                console.log("photo:" + photo);
+                console.log("Image:" + image);
+                photo.imageUrl = image;
+                this.$http.post('/api/photos', photo, photo.imageUrl)
+                    .then(function (results) {
+                    _this.$state.reload();
+                })
+                    .catch(function (reason) {
+                    console.log(reason);
+                });
+            };
+            PhotoGalleryController.prototype.deletePhoto = function (photo, id) {
+                var _this = this;
+                id = photo.id;
+                console.log(photo);
+                console.log(id);
+                this.$http.delete("/api/photos/" + id, photo).then(function (results) {
+                    _this.$state.reload();
+                })
+                    .catch(function (reason) {
+                    console.log(reason);
+                });
+            };
+            return PhotoGalleryController;
+        }());
+        Controllers.PhotoGalleryController = PhotoGalleryController;
     })(Controllers = RecipeApp.Controllers || (RecipeApp.Controllers = {}));
 })(RecipeApp || (RecipeApp = {}));
 //# sourceMappingURL=controllers.js.map

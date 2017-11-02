@@ -36,5 +36,11 @@ namespace RecipeApp.Repositories
             _db.Notes.Add(note);
             _db.SaveChanges();
         }
+
+        public void DeleteNote(Note note)
+        {
+            _db.Notes.Remove(note);
+            _db.SaveChanges();
+        }
     }
 }

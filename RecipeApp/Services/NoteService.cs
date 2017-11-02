@@ -54,6 +54,9 @@ namespace RecipeApp.Services
             };
             _nRepo.AddNote(dbNote);
         }
-
+        public void DeleteNote(NoteDTO note, int id)
+        {
+            _nRepo.DeleteNote(_nRepo.GetNoteById(id).FirstOrDefault());
+        }
     }
 }

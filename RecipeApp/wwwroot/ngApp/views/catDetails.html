@@ -1,0 +1,16 @@
+﻿<div class="container">
+    <h1>Recipes in {{controller.category.name}}</h1>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Your recipes:
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3" ng-repeat="r in controller.category.recipes">
+                    <div>{{r.title}}</div>
+                    <img ui-sref="recipeDetails({id:r.id})" ng-src="{{r.imageUrl}}" class="img-responsive"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

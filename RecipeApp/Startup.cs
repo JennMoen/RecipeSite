@@ -59,6 +59,8 @@ namespace RecipeApp
             services.AddScoped<CatService>();
             services.AddScoped<NoteRepo>();
             services.AddScoped<NoteService>();
+            services.AddScoped<PhotoRepo>();
+            services.AddScoped<PhotoService>();
 
             //I think I copied this from the authentication tutorial on microsoft's site
             //the only thing extra the Yeoman generator had was the admin only policy, which I'll add later if I need it

@@ -11,18 +11,22 @@ textarea {
     height: 200px;
 }
 
-.right-align{
+.right-align {
     float: right;
 }
 
-/*h1 {
-    padding: 20px;
-}*/
+.needsPadding {
+    padding: 30px;
+}
 
 .breakfast {
     background: url("https://static.pexels.com/photos/619328/pexels-photo-619328.jpeg");
     background-size: 100%;
-    
+}
+
+.party {
+    background: url("https://static.pexels.com/photos/5878/alcohol-glass-wine-glasses.jpg");
+    background-size: 100%;
 }
 
 /*this is just experimentation to see if it overrides the dinner party class that I set the transparency on--so far it does not*/
@@ -36,12 +40,23 @@ textarea {
     opacity: 0.6;
 }
 
-#menuTitle{
+#menuTitle {
     text-align: center;
 }
 
 .noteCard {
     height: 200px;
+    width: 300px;
+    background-color: whitesmoke;
+    margin: 20px;
+    float: left;
+    overflow: hidden;
+    padding: 10px;
+    font-size: large;
+}
+
+.picCard {
+    height: 400;
     width: 300px;
     background-color: whitesmoke;
     margin: 20px;
@@ -64,9 +79,17 @@ textarea {
     height: 300px;
 }
 
+.test-panel-img {
+    max-height: 200px;
+}
+
 .panel-image {
     height: 200px;
     margin: auto;
+}
+
+.needsCursor {
+    cursor: pointer;
 }
 
 /* Wrapping element */
@@ -102,15 +125,10 @@ textarea {
     padding-left: 0.5em;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
+
+    .test-panel {
+        height: auto;
     }
 }

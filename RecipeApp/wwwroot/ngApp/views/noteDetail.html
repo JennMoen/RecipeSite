@@ -3,11 +3,16 @@
 <div class="well well-lg breakfast">
     <div class="row">
         <div class="col-md-12">
+            
+
             <div class="noteCard-large">
+                <p ng-click="controller.deleteNote(note)"><span class="glyphicon glyphicon-remove right-align"></span></p>
                 {{controller.note.dateAdded | date}}
                 <div>{{controller.note.text}}</div>
             </div>
         </div>
-       
+
     </div>
+
 </div>
+

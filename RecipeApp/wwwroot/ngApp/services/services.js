@@ -17,6 +17,23 @@ var RecipeApp;
         }());
         Services.DetailService = DetailService;
         angular.module('RecipeApp').service('detailService', DetailService);
+        var FilePickerService = (function () {
+            function FilePickerService(filepickerService, $scope) {
+                this.filepickerService = filepickerService;
+                this.$scope = $scope;
+            }
+            FilePickerService.prototype.pickFile = function () {
+                this.filepickerService.pick({ mimetype: 'image/*' }, this.fileUploaded.bind(this));
+            };
+            FilePickerService.prototype.fileUploaded = function (file) {
+                this.file = file;
+                this.$scope.$apply();
+                this.image = file.url;
+            };
+            return FilePickerService;
+        }());
+        Services.FilePickerService = FilePickerService;
+        angular.module('RecipeApp').service('filePickerService', FilePickerService);
     })(Services = RecipeApp.Services || (RecipeApp.Services = {}));
 })(RecipeApp || (RecipeApp = {}));
 //# sourceMappingURL=services.js.map

@@ -1,0 +1,30 @@
+﻿<h2>Photo Gallery</h2>
+<h5>A place for entertaining and dining photos that inspire you</h5>
+<div class="well well-lg party">
+    <div class="row">
+        <div class="col-md-4" ng-repeat="p in controller.photos">
+            <div class="picCard">
+                <p ng-click="controller.deletePhoto(p, p.id)"><span class="glyphicon glyphicon-remove right-align"></span></p>
+               
+                {{p.dateAdded | date}}
+                <div>{{p.title}}</div>
+                <div><img ng-src="{{p.imageUrl}}" class="img-thumbnail" /></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<form ng-submit="controller.addPhoto(photo, controller.image)">
+    <div class="form-group">
+        <label for="text">Upload photo</label>
+        <button class="btn btn-info" ng-click="controller.pickFile()">Upload</button>
+        <h6>Currently uploaded file: {{controller.file.filename}}</h6>
+
+        <div class="well">
+            <img ng-src="{{controller.file.url | fpConvert:{w: 400} }}" alt="{{controller.file.filename}}" value="controller.image" ng-model="photo.imageUrl" />
+            <label>Photo title</label>
+            <input ng-model="photo.title" />
+        </div>
+    </div>
+    <button>Add photo</button>
+</form>

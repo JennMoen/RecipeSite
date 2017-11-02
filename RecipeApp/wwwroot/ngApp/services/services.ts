@@ -17,4 +17,26 @@
     angular.module('RecipeApp').service('detailService', DetailService);
 
 
+    export class FilePickerService {
+
+        public file;
+        public image;
+
+        public pickFile() {
+            this.filepickerService.pick(
+                { mimetype: 'image/*' },
+                this.fileUploaded.bind(this)
+            );
+        }
+
+
+        public fileUploaded(file) {
+            this.file = file;
+            this.$scope.$apply();
+            this.image = file.url;
+        }
+        constructor(private filepickerService, private $scope: ng.IScope){}
+    }
+    angular.module('RecipeApp').service('filePickerService', FilePickerService);
+
 }

@@ -62,11 +62,30 @@ namespace RecipeApp.Services
                                        MenuId= r.MenuId.GetValueOrDefault(),
                                        UserId = r.User.UserName
 
-                                   }).ToList()
+                                   }).Take(3).ToList()
                     }).ToList();
         }
 
-
+        public CatDTO  GetCatByName(string name)
+        {
+            return (from c in _cRepo.GetCatByName(name)
+                    select new CatDTO()
+                    {
+                        Id = c.Id,
+                        Name = c.Name,
+                        Recipes = (from r in c.Recipes
+                                   select new RecipeDTO()
+                                   {
+                                       Id = r.Id,
+                                       DateCreated = r.DateCreated,
+                                       ImageUrl = r.ImageUrl,
+                                       Notes = r.Notes,
+                                       TimeToMake = r.TimeToMake,
+                                       Title = r.Title,
+                                       MenuId = r.MenuId.GetValueOrDefault(),
+                                   }).ToList()
+                    }).FirstOrDefault();
+        }
 
     }
 }

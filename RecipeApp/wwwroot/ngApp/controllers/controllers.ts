@@ -172,6 +172,81 @@
 
             });
         }
+
+        public deleteNote(note) {
+            this.$http.delete(`/api/notes/${this.$stateParams['id']}`).then((results) => {
+                this.$state.go('notes');
+            });
+        }
+
+
+    }
+
+    export class CatDetailController {
+
+        public category;
+
+        constructor(private $http: ng.IHttpService, private $stateParams: ng.ui.IStateParamsService, private $state: ng.ui.IStateService) {
+            $http.get(`/api/categories/${this.$stateParams['id']}`).then((results) => {
+                this.category = results.data;
+            })
+        }
+
+
+    }
+
+    export class PhotoGalleryController {
+
+        public file;
+        public image;
+        public photos;
+
+        public pickFile() {
+            this.filepickerService.pick(
+                { mimetype: 'image/*' },
+                this.fileUploaded.bind(this)
+            );
+        }
+
+        public fileUploaded(file) {
+            this.file = file;
+            this.$scope.$apply();
+            this.image = file.url;
+        }
+
+        constructor(private filepickerService, private $scope: ng.IScope, private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+            $http.get('/api/photos').then((results) => {
+                this.photos = results.data;
+            })
+                .catch((reason) => {
+                    console.log(reason);
+                })
+        }
+
+        public addPhoto(photo, image) {
+            console.log("photo:" + photo);
+            console.log("Image:" + image);
+            photo.imageUrl = image;
+            this.$http.post('/api/photos', photo, photo.imageUrl)
+                .then((results) => {
+                    this.$state.reload();
+                })
+                .catch((reason) => {
+                    console.log(reason);
+                });
+        }
+
+        public deletePhoto(photo, id) {
+            id = photo.id;
+            console.log(photo);
+            console.log(id);
+            this.$http.delete(`/api/photos/${id}`, photo).then((results) => {
+                this.$state.reload();
+            })
+                .catch((reason) => {
+                    console.log(reason);
+                });
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-﻿<fieldset>
+﻿<!--<fieldset>
     <legend>Login with a Social Provider</legend>
 
     <ul>
@@ -7,26 +7,31 @@
         </li>
     </ul>
 
-</fieldset>
-
-<fieldset>
-    <legend>Login Locally</legend>
-    <ul>
-        <li ng-repeat="error in controller.validationMessages">
-            {{error}}
-        </li>
-    </ul>
-
-    <form ng-submit="controller.login()">
-        <div>
-            <label>Email:</label>
-            <input ng-model="controller.loginUser.email" />
+</fieldset>-->
+<form class="form-horizontal needsPadding" ng-submit="controller.login()">
+    <fieldset>
+        <legend>Login</legend>
+        <div class="form-group">
+            <ul>
+                <li ng-repeat="error in controller.validationMessages">
+                    {{error}}
+                </li>
+            </ul>
         </div>
-        <div>
-            <label>Password:</label>
-            <input ng-model="controller.loginUser.password" />
+        <div class="form-group">
+            <label class="control-label">Email:</label>
+            <input class="form-control" type="email" ng-model="controller.loginUser.email" />
         </div>
-        <input type="submit" value="Login" />
-        <a href="/register">Register</a>
-    </form>
-</fieldset>
+        <div class="form-group">
+            <label class="control-label">Password:</label>
+            <input class="form-control" type="password" ng-model="controller.loginUser.password" />
+        </div>
+        <!--<input type="submit" value="Login" />
+        <a href="/register">Register</a>-->
+        <button class="btn btn-success">Login</button>
+        <button class="btn btn-info" ui-sref="register">Register</button>
+    </fieldset>
+</form>
+   
+
+

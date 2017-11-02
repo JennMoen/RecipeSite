@@ -21,6 +21,7 @@ namespace RecipeApp.Data
         public DbSet<Note> Notes { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Photo> Photos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
