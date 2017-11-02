@@ -20,7 +20,8 @@ namespace RecipeApp.Services.DTO
         public string Title { get; set; }
         public string TimeToMake { get; set; }
         public string Notes { get; set; }
-
+        public string UserName { get; set; }
+        
 
         public IList<IngredientDTO> Ingredients { get; set; }
         public IList<StepDTO> Steps { get; set; }

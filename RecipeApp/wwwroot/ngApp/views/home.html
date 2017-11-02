@@ -6,7 +6,7 @@
         <div class="col-md-4" ng-repeat="r in controller.recents">
             <div class="panel panel-default test-panel">
                 <div class="panel-heading">
-                    <div>{{r.title}}</div>
+                    <div>{{r.title}} by {{r.userName}}</div>
                     <div>{{r.dateCreated | date}}</div>
                 </div>
                 <div class="panel-body">

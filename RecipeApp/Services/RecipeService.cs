@@ -94,6 +94,7 @@ namespace RecipeApp.Services
                         ImageUrl = r.ImageUrl,
                         TimeToMake = r.TimeToMake,
                         Notes = r.Notes,
+                        UserName = r.User.UserName,
                         DateCreated = r.DateCreated,
                         Ingredients = (from i in r.Ingredients
                                        select new IngredientDTO

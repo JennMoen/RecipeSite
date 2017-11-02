@@ -16,10 +16,12 @@ namespace RecipeApp.Controllers
     {
 
         private RecipeService _rService;
+        private MenuRecipeService _mrService;
 
-        public RecipesController(RecipeService rs)
+        public RecipesController(RecipeService rs, MenuRecipeService ms)
         {
             _rService = rs;
+            _mrService = ms;
         }
 
         [HttpGet]
@@ -33,6 +35,19 @@ namespace RecipeApp.Controllers
         public RecipeDTO GetById(int id, string user)
         {
             return _rService.GetById(id, User.Identity.Name);
+        }
+
+        [HttpPost("{id}")]
+        public IActionResult Add([FromBody]int menuId, int id)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _mrService.AddMenuItem(menuId, id, User.Identity.Name);
+            return Ok();
         }
 
         [Authorize]

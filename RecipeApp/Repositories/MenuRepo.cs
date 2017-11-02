@@ -31,6 +31,7 @@ namespace RecipeApp.Repositories
                    select m;
         }
 
+
         public void AddMenu(Menu menu)
         {
             _db.Menus.Add(menu);
